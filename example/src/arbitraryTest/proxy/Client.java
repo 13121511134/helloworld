@@ -1,5 +1,7 @@
 package arbitraryTest.proxy;
 
+import java.util.Observable;
+
 import arbitraryTest.proxy.test.Bird;
 import arbitraryTest.proxy.test.Singable;
 
@@ -9,9 +11,9 @@ public class Client {
 		Singable target = new Bird();
 		InvocationHandler handler =new TimeHandler(target);
 		Singable proxy =Proxy.newProxyInstance(Singable.class.getClassLoader(), Singable.class, handler);
-		InvocationHandler handler2 =new LogHandler(proxy);
-		Singable proxy2 =Proxy.newProxyInstance(Singable.class.getClassLoader(), Singable.class, handler2);
-		String result = proxy2.sing("say something");
+//		InvocationHandler handler2 =new LogHandler(proxy);
+//		Singable proxy2 =Proxy.newProxyInstance(Singable.class.getClassLoader(), Singable.class, handler2);
+		String result = proxy.sing("say something");
 		System.out.println(result);
 	}
 }
